@@ -1,4 +1,3 @@
-require('dotenv').config();
 import React, { useState, useEffect } from "react";
 import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 import { Container, AppBar, Toolbar, Typography, Button } from "@mui/material";
