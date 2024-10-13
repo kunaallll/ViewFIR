@@ -27,3 +27,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIEWPERSONFIR }}
           channelId: live
           projectId: viewpersonfir
+      - name: Print Environment Variables
+        run: |
+            echo "API_KEY is set."
+            # Avoid printing actual secrets    
