@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: npm run start
       - name: Set up environment variables
         run: |
           echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
