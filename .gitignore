@@ -61,3 +61,4 @@ bower_components
 
 # dataconnect generated files
 .dataconnect
+node_modules/.cache/
