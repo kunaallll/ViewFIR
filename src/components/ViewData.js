@@ -37,7 +37,9 @@ const ViewData = () => {
       const { year, id } = searchParams;
       // Ensure year and id are treated as strings
       const response = await axios.get(
-        `https://viewfirbackend.onrender.com/items/view-item/${String(year)}/${String(id)}`,
+        `https://viewfirbackend.onrender.com/items/view-item/${String(
+          year
+        )}/${String(id)}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`, // Ensure you're passing the token
@@ -64,18 +66,6 @@ const ViewData = () => {
         View Data
       </Typography>
       <Grid container spacing={2}>
-        {/* Year */}
-        <Grid item xs={12}>
-          <TextField
-            name="year"
-            label="Year"
-            value={searchParams.year}
-            onChange={handleInputChange}
-            fullWidth
-            required
-          />
-        </Grid>
-
         {/* ID */}
         <Grid item xs={12}>
           <TextField
@@ -83,6 +73,18 @@ const ViewData = () => {
             label="FIR"
             type="number"
             value={searchParams.id}
+            onChange={handleInputChange}
+            fullWidth
+            required
+          />
+        </Grid>
+
+        {/* Year */}
+        <Grid item xs={12}>
+          <TextField
+            name="year"
+            label="Year"
+            value={searchParams.year}
             onChange={handleInputChange}
             fullWidth
             required

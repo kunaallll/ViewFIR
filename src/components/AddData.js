@@ -73,28 +73,52 @@ const stateData = {
         "Sector 27",
         "Sector 34",
         "Sector 50",
+        "Sector 62",
+        "Sector 63",
         "Sector 75",
         "Sector 76",
         "Sector 78",
         "Sector 82",
       ],
       Ghaziabad: [
-        "Ghaziabad City",
-        "Indirapuram",
-        "Vaishali",
-        "Vasundhara",
-        "Siddharth Vihar",
-        "Crossings Republik",
-        "Nehru Nagar",
-        "Kavi Nagar",
-        "Shastri Nagar",
-        "Raj Nagar Extension",
-        "Mohan Nagar",
-        "Sanjay Nagar",
-        "Chandpur",
+        "Anand Vihar",
+        "Ashok Park",
+        "Bagdogra",
+        "Bhajanpura",
         "Bhopura",
+        "Chandpur",
+        "Crossings Republik",
         "Dasna",
+        "Dhanapur",
         "Duhai",
+        "Ghaziabad City",
+        "Gobindpur",
+        "Hapur Road",
+        "Hariharpur",
+        "Harsh Vihar",
+        "Indirapuram",
+        "Kavi Nagar",
+        "Kaushambi",
+        "Kheda",
+        "Laxmi Nagar",
+        "Madhya Mohalla",
+        "Mohan Nagar",
+        "Nand Nagri",
+        "Nehru Nagar",
+        "Neelam Vihar",
+        "Raj Nagar Extension",
+        "Rajendra Nagar",
+        "Sanjay Nagar",
+        "Satyanagar",
+        "Shastri Nagar",
+        "Shiv Vihar",
+        "Shyampur",
+        "Siddharth Vihar",
+        "Sushant Vihar",
+        "Vaibhav Khand",
+        "Vaishali",
+        "Vaishali Extension",
+        "Vasundhara",
       ],
     },
   },
@@ -180,26 +204,34 @@ const AddData = () => {
       // Check if the user uploaded a file
       if (formData.file) {
         // Handle file upload progress
-        await axios.post("https://viewfirbackend.onrender.com/items/add-item", formDataObj, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          onUploadProgress: (progressEvent) => {
-            const percentCompleted = Math.round(
-              (progressEvent.loaded * 100) / progressEvent.total
-            );
-            setUploadProgress(percentCompleted);
-          },
-        });
+        await axios.post(
+          "https://viewfirbackend.onrender.com/items/add-item",
+          formDataObj,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+            onUploadProgress: (progressEvent) => {
+              const percentCompleted = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total
+              );
+              setUploadProgress(percentCompleted);
+            },
+          }
+        );
       } else {
         // Proceed without file upload progress tracking if no file is uploaded
-        await axios.post("http://localhost:5000/items/add-item", formDataObj, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        await axios.post(
+          "https://viewfirbackend.onrender.com/items/add-item",
+          formDataObj,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
       }
 
       // Success handling
@@ -254,24 +286,24 @@ const AddData = () => {
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          {/* Year */}
-          <Grid item xs={12}>
-            <TextField
-              name="year"
-              label="Year"
-              value={formData.year}
-              onChange={handleInputChange}
-              fullWidth
-              required
-            />
-          </Grid>
-
           {/* FIR Number */}
           <Grid item xs={12}>
             <TextField
               name="id"
               label="FIR"
               value={formData.id}
+              onChange={handleInputChange}
+              fullWidth
+              required
+            />
+          </Grid>
+
+          {/* Year */}
+          <Grid item xs={12}>
+            <TextField
+              name="year"
+              label="Year"
+              value={formData.year}
               onChange={handleInputChange}
               fullWidth
               required
