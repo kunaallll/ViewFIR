@@ -36,12 +36,10 @@ const ViewData = () => {
     try {
       const { year, id } = searchParams;
       // Ensure year and id are treated as strings
-      const response = await axios.post(
-        `https://viewfirbackend.onrender.com/items/view-item`,
-        {
-          year: String(year), // Pass year and id in the body
-          id: String(id),
-        },
+      const response = await axios.get(
+        `https://viewfirbackend.onrender.com/items/view-item/${String(
+          year
+        )}/${String(id)}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`, // Ensure you're passing the token
